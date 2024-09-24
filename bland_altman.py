@@ -10,14 +10,14 @@ def detect_encoding(file_path):
     return chardet.detect(raw_data)['encoding']
 
 # 파일 경로
-file_path = '/content/drive/MyDrive/20240924/incheon_standard.csv'
+file_path = '/content/drive/MyDrive/20240924/samsung_standard.csv'
 
 # 인코딩 감지 및 출력
 detected_encoding = detect_encoding(file_path)
 print(f"Detected encoding: {detected_encoding}")
 
-# CSV 파일 로드
-data = pd.read_csv(file_path, encoding=detected_encoding)
+# CSV 파일 로드 (헤더를 첫 번째 행으로 지정)
+data = pd.read_csv(file_path, encoding=detected_encoding, header=0)
 
 # 열 이름 확인 및 데이터 추출
 print("Column names:", data.columns)
